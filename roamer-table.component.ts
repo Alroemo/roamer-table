@@ -1,4 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
+import { MatSort } from '@angular/material/sort';
+import { MatTableDataSource } from '@angular/material/table';
 
 export interface User {
   name: string;
@@ -20,10 +22,27 @@ const emailList:User[] = [
 
 export class RoamerTableComponent implements OnInit {
   displayedColumns: string[] = ['name', 'email', 'id'];
-  dataSource = emailList;
+  // dataSource = emailList;
+
+  dataSource = new MatTableDataSource(emailList);
+
+  @ViewChild(MatSort) sort!: MatSort;
+
   constructor() { }
 
   ngOnInit(): void {
+    
+  }
+
+  ngAfterViewInit():void {
+    this.dataSource.sort = this.sort;
+  }
+
+  announceSortChange() {
+    // This example uses English messages. If your application supports
+    // multiple language, you would internationalize these strings.
+    // Furthermore, you can customize the message to add additional
+    // details about the values being sorted.
   }
 
 }
