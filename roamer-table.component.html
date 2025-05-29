@@ -1,4 +1,4 @@
-<mat-table [dataSource]="dataSource" class="mat-elevation-z8" matSort (matSortChange)="announceSortChange()">
+<mat-table [dataSource]="dataSource" class="mat-elevation-z8" matSort>
   
   <ng-container *ngFor="let column of displayedColumns" [matColumnDef]="column">
     <mat-header-cell *matHeaderCellDef mat-sort-header> {{ column }} </mat-header-cell>
@@ -7,10 +7,11 @@
 
   <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
   <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
-
-  <mat-paginator [pageSizeOptions]="[5, 10, 20]"
-    showFirstLastButtons
-    aria-label="Select page of periodic elements">
-  </mat-paginator>
-
 </mat-table>
+
+<mat-paginator [pageSizeOptions]="[5, 10, 20]"
+  showFirstLastButtons
+  aria-label="Select page of periodic elements">
+</mat-paginator>
+
+
